@@ -1,0 +1,245 @@
+/* =========================================================
+   GADIM 首頁樣式（依客戶確認版設計稿還原）
+   - 圖片全部取自設計稿原圖，只移除圖上文字，未改色、未加效果
+   - 桌機版：以設計稿 1024px 寬為基準等比例縮放（--u = 設計稿 1px）
+   - 手機版（760px 以下）：改為上下排列
+   字型：大標＝粗明體／小標＝微軟正黑體粗體／內文＝微軟正黑體細體／英文數字＝Times New Roman
+   ========================================================= */
+
+:root {
+  --en: "Times New Roman", Times, "Liberation Serif", Tinos;
+  --ff-title: var(--en), "PMingLiU", "MingLiU", "新細明體", "Noto Serif TC", serif;
+  --ff-sub: var(--en), "Microsoft JhengHei", "微軟正黑體", "Noto Sans TC", sans-serif;
+  --ff-body: var(--en), "Microsoft JhengHei Light", "Microsoft JhengHei", "微軟正黑體", "Noto Sans TC", sans-serif;
+
+  --navy: #1f2558;
+  --purple: #5e5398;
+  --teal: #2f7f7c;
+  --text: #2f3450;
+  --muted: #555a74;
+  --line: #cfcfdc;
+  --bg: #fbfbfd;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--ff-body); font-weight: 300; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; font-weight: inherit; }
+
+.font-title { font-family: var(--ff-title); font-weight: 700; color: var(--navy); }
+.font-sub   { font-family: var(--ff-sub); font-weight: 700; color: var(--navy); }
+.en-italic  { font-family: var(--en), serif; font-style: italic; font-weight: 400; color: var(--navy); }
+
+/* 整頁以設計稿比例縮放 */
+.page { max-width: 1440px; margin: 0 auto; container-type: inline-size; overflow: hidden; background: var(--bg); }
+.page * { --u: calc(100cqw / 1024); }
+.abs { position: absolute; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u)); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: calc(14 * var(--u));
+  border-radius: 999px; border: 1.5px solid var(--purple);
+  font-family: var(--ff-sub); font-weight: 700; white-space: nowrap; transition: .2s;
+}
+.btn-primary { background: var(--purple); color: #fff; }
+.btn-primary:hover { background: #4b4185; }
+.btn-outline { background: rgba(255,255,255,.55); color: var(--navy); }
+.btn-outline:hover { background: #efedf7; }
+.arrow { width: 1.2em; height: 1.2em; flex: none; }
+
+/* ---------- 頁首 ---------- */
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: #fff; }
+.header-inner { position: relative; height: calc(72 * var(--u)); }
+.brand-logo { width: calc(66 * var(--u)); }
+.brand-text { line-height: 1.2; }
+.brand-name { font-family: var(--en), serif; font-weight: 700; font-size: calc(22 * var(--u)); color: var(--purple); letter-spacing: .03em; }
+.brand-zh { font-family: var(--ff-sub); font-weight: 700; font-size: calc(10.5 * var(--u)); color: var(--navy); margin-top: calc(2 * var(--u)); }
+.brand-en { font-family: var(--en), serif; font-size: calc(7.6 * var(--u)); color: var(--navy); }
+.nav { display: flex; gap: calc(24 * var(--u)); }
+.nav a { font-family: var(--ff-sub); font-weight: 700; font-size: calc(12.7 * var(--u)); color: var(--navy); position: relative; line-height: 1; }
+.nav a.active { color: var(--purple); }
+.nav a.active::after { content: ""; position: absolute; left: calc(-7 * var(--u)); right: calc(-7 * var(--u)); top: calc(22 * var(--u)); height: 2px; background: var(--purple); }
+.nav a:hover { color: var(--purple); }
+.header-tools { display: flex; align-items: center; }
+.icon-btn { background: none; border: 0; padding: 0; color: var(--navy); cursor: pointer; display: inline-flex; align-items: center; gap: calc(3 * var(--u)); font-family: var(--ff-sub); font-weight: 700; font-size: calc(13 * var(--u)); }
+.icon-btn svg { width: calc(18 * var(--u)); height: calc(18 * var(--u)); }
+.header-join { width: calc(87 * var(--u)); height: calc(30 * var(--u)); font-size: calc(13 * var(--u)); }
+.menu-toggle { display: none; }
+
+/* ---------- 主視覺 ---------- */
+.hero { position: relative; aspect-ratio: 1024 / 398; }
+.hero-bg { position: absolute; inset: 0; background: url("images/hero.jpg") center / 100% 100% no-repeat; }
+.eyebrow { font-family: var(--en), serif; font-style: italic; font-size: calc(16 * var(--u)); letter-spacing: .09em; color: var(--navy); line-height: calc(18 * var(--u)); }
+.hero h1 { font-size: calc(43 * var(--u)); line-height: calc(50 * var(--u)); letter-spacing: .02em; white-space: nowrap; }
+.hero-lead { font-size: calc(16 * var(--u)); line-height: calc(25 * var(--u)); letter-spacing: .3em; color: var(--text); white-space: nowrap; }
+.hero-actions { display: flex; gap: calc(18 * var(--u)); }
+.hero-actions .btn { width: calc(166 * var(--u)); height: calc(37 * var(--u)); font-size: calc(14.5 * var(--u)); }
+
+/* ---------- 四大特色 ---------- */
+.features { position: relative; aspect-ratio: 1024 / 100; background: url("images/features.jpg") center / 100% 100% no-repeat; }
+.features .feature-icon, .features .vline { display: none; }
+.feature-icon { width: calc(var(--iw) * var(--u)); height: auto; }
+.feature-text h3 { font-size: calc(16.5 * var(--u)); line-height: calc(22 * var(--u)); }
+.feature-text p { font-size: calc(11.5 * var(--u)); line-height: calc(20 * var(--u)); color: var(--muted); }
+.vline { position: absolute; width: 1px; height: calc(42 * var(--u)); background: var(--line); }
+
+/* ---------- 區塊標題 ---------- */
+.section-title { display: flex; align-items: center; gap: calc(18 * var(--u)); white-space: nowrap; }
+.section-title h2 { font-size: calc(29 * var(--u)); letter-spacing: .1em; line-height: 1.2; }
+.section-title .en-italic { font-size: calc(16.5 * var(--u)); color: var(--muted); }
+.dash { display: inline-block; width: calc(40 * var(--u)); height: 1.5px; background: var(--teal); }
+.more-link { display: inline-flex; align-items: center; gap: calc(10 * var(--u)); font-family: var(--ff-sub); font-weight: 700; font-size: calc(14 * var(--u)); color: var(--navy); }
+
+/* ---------- 雙領域整合 ---------- */
+.domains-sec { position: relative; height: calc(315 * var(--u)); }
+.domain-card {
+  container-type: inline-size; display: block;
+  aspect-ratio: var(--w) / 215; width: calc(var(--w) * var(--u));
+  background: var(--img) center / 100% 100% no-repeat;
+}
+.domain-card * { --c: calc(100cqw / var(--w)); }
+.domain-card .in { position: absolute; left: calc(30 * var(--c)); top: calc(36 * var(--c)); }
+.domain-card h3 { font-size: calc(32 * var(--c)); line-height: calc(40 * var(--c)); letter-spacing: .12em; }
+.domain-card p { font-family: var(--ff-sub); font-weight: 700; color: var(--navy); font-size: calc(15.5 * var(--c)); letter-spacing: .2em; margin-top: calc(6 * var(--c)); }
+.circle-btn {
+  position: absolute; left: calc(32 * var(--c)); top: calc(136 * var(--c));
+  width: calc(42 * var(--c)); height: calc(42 * var(--c)); border-radius: 50%;
+  border: 1.5px solid var(--teal); color: var(--teal); display: grid; place-items: center; transition: .2s;
+}
+.circle-btn .arrow { width: calc(20 * var(--c)); height: calc(20 * var(--c)); }
+.domain-card:hover .circle-btn { background: var(--teal); color: #fff; }
+
+/* ---------- 學會宗旨 ---------- */
+.mission { position: relative; aspect-ratio: 1024 / 135; background: url("images/mission.jpg") center / 100% 100% no-repeat; }
+.mission-title h2 { font-size: calc(31 * var(--u)); line-height: calc(38 * var(--u)); letter-spacing: .12em; }
+.mission-title .en-italic { font-size: calc(19 * var(--u)); line-height: calc(26 * var(--u)); margin-top: calc(4 * var(--u)); }
+.mission-text { width: calc(600 * var(--u)); font-size: calc(15 * var(--u)); line-height: calc(26 * var(--u)); letter-spacing: .08em; }
+
+/* ---------- 近期學術活動 ---------- */
+.events-sec { position: relative; height: calc(340 * var(--u)); }
+.event-card {
+  display: flex; flex-direction: column; width: calc(var(--w) * var(--u)); height: calc(216 * var(--u));
+  background: #fff; border-radius: calc(10 * var(--u)); overflow: hidden;
+  box-shadow: 0 calc(4 * var(--u)) calc(16 * var(--u)) rgba(50, 50, 100, .08); transition: transform .2s;
+}
+.event-card:hover { transform: translateY(-3px); }
+.event-card img { width: 100%; height: calc(128 * var(--u)); object-fit: cover; }
+.event-body { position: relative; flex: 1; display: flex; align-items: center; padding: 0 calc(14 * var(--u)) 0 0; }
+.event-date { width: calc(82 * var(--u)); text-align: center; font-family: var(--en), serif; color: var(--navy); line-height: 1; flex: none; display: flex; flex-direction: column; gap: calc(3 * var(--u)); border-right: 1px solid var(--line); padding: calc(4 * var(--u)) 0; }
+.event-date .m { font-size: calc(12.5 * var(--u)); letter-spacing: .1em; }
+.event-date .d { font-size: calc(30 * var(--u)); }
+.event-date .y { font-size: calc(12.5 * var(--u)); letter-spacing: .08em; }
+.event-info { padding-left: calc(17 * var(--u)); }
+.event-info h3 { font-size: calc(14.5 * var(--u)); line-height: calc(20 * var(--u)); }
+.event-meta { display: flex; align-items: center; gap: calc(8 * var(--u)); font-size: calc(12.5 * var(--u)); margin-top: calc(9 * var(--u)); color: var(--text); white-space: nowrap; }
+.event-meta svg { width: calc(13 * var(--u)); height: calc(13 * var(--u)); color: var(--navy); }
+.event-meta .sep { color: var(--line); }
+
+/* ---------- 加入 GADIM ---------- */
+.join { position: relative; aspect-ratio: 1024 / 176; background: url("images/join.jpg") center / 100% 100% no-repeat; }
+.join h2 { font-size: calc(31 * var(--u)); line-height: calc(36 * var(--u)); letter-spacing: .04em; white-space: nowrap; }
+.join p { font-family: var(--ff-sub); font-weight: 700; color: var(--navy); font-size: calc(15.5 * var(--u)); letter-spacing: .16em; margin-top: calc(6 * var(--u)); white-space: nowrap; }
+.join .btn { width: calc(153 * var(--u)); height: calc(38 * var(--u)); font-size: calc(14 * var(--u)); }
+
+/* ---------- 編輯模式工具列 ---------- */
+.edit-bar {
+  position: fixed; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 100;
+  display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: rgba(31,37,88,.92); box-shadow: 0 6px 20px rgba(0,0,0,.2);
+}
+.edit-bar button { border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; font-family: var(--ff-sub); font-weight: 700; font-size: 13px; background: #fff; color: var(--navy); }
+.edit-bar button[hidden] { display: none; }
+.edit-bar button.on { background: #f3c94c; }
+body.editing [data-editable] { outline: 1px dashed rgba(94,83,152,.5); outline-offset: 2px; }
+body.editing [data-editable]:hover { outline-color: var(--purple); background: rgba(233,230,244,.5); }
+body.editing [data-editable]:focus { outline: 2px solid var(--purple); background: rgba(255,255,255,.85); }
+.toast { position: fixed; left: 50%; bottom: 80px; transform: translateX(-50%); background: var(--navy); color: #fff; padding: 8px 18px; border-radius: 8px; font-size: 14px; z-index: 101; opacity: 0; transition: .3s; pointer-events: none; }
+.toast.show { opacity: 1; }
+
+/* =========================================================
+   手機版（760px 以下）：同樣使用原圖，改為上下排列
+   ========================================================= */
+@media (max-width: 760px) {
+  .page * { --u: 1px; }
+  .abs { position: static; }
+
+  /* 頁首 */
+  .header-inner { height: 64px; display: flex; align-items: center; gap: 10px; padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); }
+  .brand { display: flex; align-items: center; gap: 8px; }
+  .brand-logo { width: 46px; }
+  .brand-name { font-size: 19px; }
+  .brand-zh { font-size: 11px; margin-top: 1px; }
+  .brand-en { display: none; }
+  .header-tools { margin-left: auto; gap: 14px; }
+  .search, .lang, .header-join { display: none !important; }
+  .menu-toggle { display: inline-flex; }
+  .menu-toggle svg { width: 26px; height: 26px; }
+  .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0; background: #fff; padding: 4px 16px 12px; box-shadow: 0 10px 20px rgba(0,0,0,.06); }
+  .nav.open { display: flex; }
+  .nav a { font-size: 15px; padding: 12px 4px; border-bottom: 1px solid #eee; }
+  .nav a.active::after { display: none; }
+
+  /* 主視覺：文字在上、原圖在下 */
+  .hero { aspect-ratio: auto; display: flex; flex-direction: column; background: #f9f9fb; }
+  .hero-copy { order: 1; padding: 32px 20px 8px; }
+  .hero-bg { position: relative; order: 2; inset: auto; aspect-ratio: 644 / 398; background-size: auto 100%; background-position: right center; }
+  .hero .eyebrow { display: flex; align-items: center; gap: 14px; font-size: 14px; line-height: 1.4; }
+  .hero .eyebrow::before { content: ""; width: 32px; height: 1.5px; background: var(--navy); }
+  .hero h1 { font-size: clamp(24px, 7.2vw, 34px); line-height: 1.38; margin-top: 14px; }
+  .hero-lead { font-size: 14.5px; line-height: 1.75; letter-spacing: .14em; margin-top: 14px; }
+  .hero-actions { margin-top: 22px; gap: 12px; flex-wrap: wrap; }
+  .hero-actions .btn { width: auto; height: 42px; padding: 0 22px; font-size: 14.5px; gap: 10px; }
+
+  /* 四大特色：兩欄 */
+  .features { aspect-ratio: auto; background: #f4f4f9; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 12px; padding: 22px 16px; }
+  .feature { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .features .feature-icon { display: block; height: 42px; width: auto; flex: none; border-radius: 8px; }
+  .feature-text h3 { font-size: 16px; line-height: 1.4; }
+  .feature-text p { font-size: 11.5px; line-height: 1.5; letter-spacing: -.02em; }
+  .vline { display: none; }
+
+  /* 區塊標題 */
+  .section-title { flex-wrap: wrap; gap: 4px 12px; white-space: normal; }
+  .section-title h2 { font-size: 25px; }
+  .section-title .en-italic { font-size: 15px; }
+  .dash { width: 32px; }
+
+  /* 雙領域整合：卡片上下排 */
+  .domains-sec { height: auto; padding: 30px 16px; display: flex; flex-direction: column; gap: 16px; }
+  .domains-sec .section-title { margin-bottom: 4px; }
+  .domain-card { width: 100%; position: relative; left: auto; top: auto; }
+
+  /* 學會宗旨 */
+  .mission { aspect-ratio: auto; background-size: auto 100%; background-position: right center; padding: 28px 20px; display: flex; flex-direction: column; gap: 14px; }
+  .mission-title h2 { font-size: 27px; line-height: 1.3; }
+  .mission-title .en-italic { font-size: 17px; line-height: 1.4; margin-top: 0; }
+  .mission-text br { display: none; }
+  .mission-text { width: auto; font-size: 15px; line-height: 1.85; letter-spacing: .05em; }
+
+  /* 近期學術活動 */
+  .events-sec { height: auto; padding: 32px 16px; display: flex; flex-direction: column; gap: 16px; }
+  .events-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+  .more-link { font-size: 14px; gap: 6px; flex: none; }
+  .event-card { width: 100%; height: auto; border-radius: 10px; }
+  .event-card img { height: auto; aspect-ratio: 304 / 128; }
+  .event-body { padding: 14px 14px 14px 0; }
+  .event-date { width: 76px; gap: 3px; }
+  .event-date .m, .event-date .y { font-size: 12.5px; }
+  .event-date .d { font-size: 30px; }
+  .event-info { padding-left: 16px; }
+  .event-info h3 { font-size: 15px; line-height: 1.45; }
+  .event-meta { font-size: 13px; gap: 8px; margin-top: 6px; }
+  .event-meta svg { width: 13px; height: 13px; }
+
+  /* 加入 GADIM */
+  .join { aspect-ratio: auto; background-size: auto 100%; background-position: 70% bottom; padding: 36px 20px 120px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+  .join-title { display: flex; align-items: center; gap: 14px; }
+  .join-title::before { content: ""; width: 32px; height: 1.5px; background: var(--teal); flex: none; }
+  .join h2 { font-size: 27px; line-height: 1.3; }
+  .join p { font-size: 14.5px; letter-spacing: .1em; white-space: normal; }
+  .join .btn { width: auto; height: 42px; padding: 0 26px; font-size: 14.5px; gap: 10px; }
+}

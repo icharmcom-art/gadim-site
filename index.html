@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GADIM 全球中西整合醫療發展學會</title>
+<meta name="description" content="全球中西整合醫療發展學會（GADIM）推動中西醫學與中西獸醫學之整合發展。">
+<!-- 備用字型：電腦沒有微軟正黑體／新細明體時（如 Mac、手機）才會用到 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;700&family=Noto+Serif+TC:wght@700&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+<!-- ================= 頁首 ================= -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#">
+      <img class="brand-logo abs" style="--x:30;--y:8" src="images/logo.png" alt="GADIM 標誌">
+      <div class="brand-text abs" style="--x:105;--y:11">
+        <div class="brand-name">GADIM</div>
+        <div class="brand-zh">全球中西整合醫療發展學會</div>
+        <div class="brand-en">Global Association for the Development of Integrative Medicine</div>
+      </div>
+    </a>
+    <nav class="nav abs" id="nav" style="--x:347;--y:29">
+      <a href="#" class="active">首頁</a>
+      <a href="#">關於學會</a>
+      <a href="#">專家團隊</a>
+      <a href="#">整合醫療知識</a>
+      <a href="#">課程活動</a>
+      <a href="#">最新消息</a>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-btn search abs" style="--x:803;--y:26" aria-label="搜尋">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      </button>
+      <button class="icon-btn lang abs" style="--x:837;--y:26" aria-label="語言">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
+        <span>中</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:.8em;height:.8em"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <a class="btn btn-primary header-join abs" style="--x:904;--y:20" href="#join"><span>加入本會</span></a>
+      <button class="icon-btn menu-toggle" aria-label="選單" onclick="document.getElementById('nav').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ================= 主視覺 ================= -->
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="人體、狗與貓的整合醫學意象圖"></div>
+    <div class="hero-copy">
+      <div class="eyebrow abs" style="--x:108;--y:56">INTEGRATIVE MEDICINE</div>
+      <h1 class="font-title abs" style="--x:50;--y:94">推動中西醫學與<br>中西獸醫學之整合發展</h1>
+      <p class="hero-lead abs" style="--x:57;--y:205">促進學術交流與跨領域合作，<br>增進人類及動物之健康與福祉。</p>
+      <div class="hero-actions abs" style="--x:57;--y:277">
+        <a class="btn btn-primary" href="#mission"><span>了解學會宗旨</span>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+        <a class="btn btn-outline" href="#events"><span>探索學術活動</span>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 四大特色 ================= -->
+  <section class="features">
+    <div class="feature">
+      <img class="feature-icon abs" style="--x:48;--y:18;--iw:48" src="images/icon1.png" alt="">
+      <div class="feature-text abs" style="--x:107;--y:26"><h3 class="font-sub">學術研究</h3><p>建立整合醫療的實證基礎</p></div>
+    </div>
+    <span class="vline" style="left:calc(270 * var(--u));top:calc(27 * var(--u))"></span>
+    <div class="feature">
+      <img class="feature-icon abs" style="--x:296;--y:20;--iw:64" src="images/icon2.png" alt="">
+      <div class="feature-text abs" style="--x:366;--y:26"><h3 class="font-sub">教育培訓</h3><p>培育跨領域整合醫療人才</p></div>
+    </div>
+    <span class="vline" style="left:calc(523 * var(--u));top:calc(27 * var(--u))"></span>
+    <div class="feature">
+      <img class="feature-icon abs" style="--x:549;--y:20;--iw:64" src="images/icon3.png" alt="">
+      <div class="feature-text abs" style="--x:619;--y:26"><h3 class="font-sub">臨床應用</h3><p>提升整合照護與服務品質</p></div>
+    </div>
+    <span class="vline" style="left:calc(777 * var(--u));top:calc(27 * var(--u))"></span>
+    <div class="feature">
+      <img class="feature-icon abs" style="--x:797;--y:20;--iw:61" src="images/icon4.png" alt="">
+      <div class="feature-text abs" style="--x:865;--y:26"><h3 class="font-sub">國際交流</h3><p>促進國內外學術合作</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 雙領域整合 ================= -->
+  <section class="domains-sec">
+    <div class="section-title abs" style="--x:57;--y:22">
+      <span class="dash"></span>
+      <h2 class="font-title">雙領域整合</h2>
+      <span class="en-italic">Two Domains, One Integrative Medicine</span>
+    </div>
+    <a class="domain-card abs" href="#" style="--x:40;--y:81;--w:461;--img:url('images/card-tcm.jpg')">
+      <div class="in"><h3 class="font-title">中醫整合</h3><p>中醫 × 西醫</p></div>
+      <span class="circle-btn"><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h13m-5-5 5 5-5 5"/></svg></span>
+    </a>
+    <a class="domain-card abs" href="#" style="--x:522;--y:81;--w:459;--img:url('images/card-vet.jpg')">
+      <div class="in"><h3 class="font-title">中獸整合</h3><p>中醫 × 西醫</p></div>
+      <span class="circle-btn"><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h13m-5-5 5 5-5 5"/></svg></span>
+    </a>
+  </section>
+
+  <!-- ================= 學會宗旨 ================= -->
+  <section class="mission" id="mission">
+    <div class="mission-title abs" style="--x:66;--y:33">
+      <h2 class="font-title">學會宗旨</h2>
+      <div class="en-italic">Our Mission</div>
+    </div>
+    <p class="mission-text abs" style="--x:312;--y:37">結合傳統醫學與現代醫學，推動整合醫療之學術研究、教育培訓與臨床應用，<br>提升醫療專業知能與服務品質，促進國內外學術交流與合作。</p>
+  </section>
+
+  <!-- ================= 近期學術活動 ================= -->
+  <section class="events-sec" id="events">
+    <div class="events-head">
+      <div class="section-title abs" style="--x:55;--y:32">
+        <h2 class="font-title">近期學術活動</h2>
+        <span class="en-italic">Upcoming Events</span>
+      </div>
+      <a class="more-link abs" style="--x:888;--y:42" href="#"><span>更多活動</span>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+    </div>
+
+    <a class="event-card abs" href="#" style="--x:45;--y:98;--w:304">
+      <img src="images/event1.jpg" alt="針灸臨床">
+      <div class="event-body">
+        <div class="event-date"><span class="m">APR</span><span class="d">18</span><span class="y">2026</span></div>
+        <div class="event-info">
+          <h3 class="font-sub">中西整合醫療臨床應用研討會</h3>
+          <div class="event-meta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>臺北</span><span class="sep">|</span><span>實體＋線上</span></div>
+        </div>
+      </div>
+    </a>
+    <a class="event-card abs" href="#" style="--x:365;--y:98;--w:298">
+      <img src="images/event2.jpg" alt="研究論壇會場">
+      <div class="event-body">
+        <div class="event-date"><span class="m">MAR</span><span class="d">05</span><span class="y">2026</span></div>
+        <div class="event-info">
+          <h3 class="font-sub">整合醫療研究與實證論壇</h3>
+          <div class="event-meta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>臺中</span><span class="sep">|</span><span>實體</span></div>
+        </div>
+      </div>
+    </a>
+    <a class="event-card abs" href="#" style="--x:679;--y:98;--w:301">
+      <img src="images/event3.jpg" alt="獸醫照護貓咪">
+      <div class="event-body">
+        <div class="event-date"><span class="m">FEB</span><span class="d">21</span><span class="y">2026</span></div>
+        <div class="event-info">
+          <h3 class="font-sub">中西獸醫整合照護工作坊</h3>
+          <div class="event-meta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>臺中</span><span class="sep">|</span><span>實作課程</span></div>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- ================= 加入 GADIM ================= -->
+  <section class="join" id="join">
+    <div class="join-title abs" style="--x:132;--y:43">
+      <div>
+        <h2 class="font-title">加入 GADIM</h2>
+        <p>攜手推動整合醫療的發展與實踐</p>
+      </div>
+    </div>
+    <a class="btn btn-primary abs" style="--x:414;--y:59" href="#"><span>加入本會</span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+  </section>
+</main>
+</div>
+
+<!-- ================= 文字編輯工具 ================= -->
+<div class="edit-bar" data-tool>
+  <button type="button" id="editToggle">✎ 編輯文字</button>
+  <button type="button" id="saveBtn" hidden>下載修改後的網頁</button>
+</div>
+<div class="toast" id="toast" data-tool></div>
+
+<script src="editor.js"></script>
+</body>
+</html>
