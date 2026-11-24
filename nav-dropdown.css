@@ -1,0 +1,21 @@
+/* 「專家團隊」下拉選單（所有頁面共用）
+   桌機：滑過或點一下展開；手機：在漢堡選單內點一下展開 */
+.nav-drop { position: relative; display: inline-flex; align-items: center; }
+.nav-drop-menu { position: absolute; top: 100%; left: 50%; transform: translate(-50%, 6px); padding-top: 14px; opacity: 0; visibility: hidden; transition: opacity .18s, transform .18s, visibility .18s; z-index: 60; }
+.nav-drop:hover .nav-drop-menu,
+.nav-drop:focus-within .nav-drop-menu,
+.nav-drop.open .nav-drop-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-drop-list { list-style: none; margin: 0; padding: 8px 0; min-width: 160px; background: #fff; border: 1px solid #ebeaf2; border-radius: 12px; box-shadow: 0 14px 34px rgba(31, 37, 88, .13); }
+.nav .nav-drop-list a { display: block; padding: 10px 22px; border: 0; font-size: 14px; line-height: 1.4; letter-spacing: .04em; white-space: nowrap; text-align: left; color: #1f2558; }
+.nav .nav-drop-list a::after { display: none; }
+.nav .nav-drop-list a:hover, .nav .nav-drop-list a[aria-current="page"] { color: #5e5398; background: #f4f2f9; }
+
+/* 手機：漢堡選單打開時，子選單改為往下展開的清單 */
+.nav.open .nav-drop { display: block; }
+.nav.open .nav-drop-toggle { display: flex; justify-content: space-between; align-items: center; }
+.nav.open .nav-drop-toggle::before { content: ""; order: 2; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin: -4px 6px 0 0; transition: transform .2s; }
+.nav.open .nav-drop.open .nav-drop-toggle::before { transform: rotate(-135deg); margin-top: 4px; }
+.nav.open .nav-drop-menu { position: static; transform: none; padding: 0; opacity: 1; visibility: visible; display: none; transition: none; }
+.nav.open .nav-drop.open .nav-drop-menu { display: block; }
+.nav.open .nav-drop-list { min-width: 0; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: #f7f6fb; }
+.nav.open .nav-drop-list a { padding: 12px 4px 12px 22px; font-size: 15px; border-bottom: 1px solid #eee; }

@@ -6,6 +6,7 @@
 <meta name="description" content="GADIM 全球中西整合醫療發展學會，致力於中西醫學與中西獸醫學整合，促進學術交流、跨專業合作、教育培訓與臨床應用。">
 <title>關於學會｜GADIM 全球中西整合醫療發展學會</title>
 <link rel="stylesheet" href="about.css">
+<link rel="stylesheet" href="nav-dropdown.css">
 </head>
 <body>
 <div class="page">
@@ -16,7 +17,15 @@
 <nav class="nav" id="nav" aria-label="主要導覽">
 <a href="index.html">首頁</a>
 <a class="active" href="about.html" aria-current="page">關於學會</a>
-<a href="index.html">專家團隊</a>
+<div class="nav-drop">
+        <a href="expert-lin-xintai.html" class="nav-drop-toggle" aria-haspopup="true" aria-expanded="false">專家團隊</a>
+        <div class="nav-drop-menu">
+          <ul class="nav-drop-list">
+            <li><a href="expert-lin-xintai.html">林新泰 醫師</a></li>
+            <li><a href="expert-lin-gengxuan.html">林耿玄 獸醫師</a></li>
+          </ul>
+        </div>
+      </div>
 <a href="index.html">整合醫療知識</a>
 <a href="index.html">課程活動</a>
 <a href="index.html">最新消息</a>
@@ -64,4 +73,5 @@ const nav = document.getElementById('nav');
 toggle.addEventListener('click',()=>{ const open=nav.classList.toggle('open'); toggle.setAttribute('aria-expanded',String(open)); });
 nav.addEventListener('click',e=>{ if(e.target.closest('a')){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); } });
 </script>
+<script src="nav-dropdown.js"></script>
 </body></html>
