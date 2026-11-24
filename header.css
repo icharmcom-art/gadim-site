@@ -1,0 +1,52 @@
+/* =========================================================
+   共用頁首（所有頁面同一份，以首頁設計稿為標準）
+   - 桌機：以首頁設計稿 1024px 寬為基準等比例縮放（--hu = 設計稿 1px）
+   - 手機（760px 以下）：漢堡選單
+   字型：小標＝微軟正黑體粗體／英文數字＝Times New Roman
+   ========================================================= */
+.gh {
+  --gh-en: "Times New Roman", Times, "Liberation Serif", Tinos;
+  --gh-sub: var(--gh-en), "Microsoft JhengHei", "微軟正黑體", "Noto Sans TC", sans-serif;
+  --gh-navy: #1f2558; --gh-purple: #5e5398;
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: #fff;
+  container-type: inline-size; line-height: 1.2;
+}
+.gh * { --hu: calc(100cqw / 1024); box-sizing: border-box; }
+.gh a { color: inherit; text-decoration: none; }
+.gh-abs { position: absolute; left: calc(var(--x) * var(--hu)); top: calc(var(--y) * var(--hu)); }
+.gh-inner { position: relative; height: calc(72 * var(--hu)); }
+.gh-logo { display: block; width: calc(66 * var(--hu)); max-width: none; }
+.gh-text { line-height: 1.2; }
+.gh-name { font-family: var(--gh-en), serif; font-weight: 700; font-size: calc(22 * var(--hu)); color: var(--gh-purple); letter-spacing: .03em; }
+.gh-zh { font-family: var(--gh-sub); font-weight: 700; font-size: calc(10.5 * var(--hu)); color: var(--gh-navy); margin-top: calc(2 * var(--hu)); white-space: nowrap; }
+.gh-en { font-family: var(--gh-en), serif; font-weight: 400; font-size: calc(7.6 * var(--hu)); color: var(--gh-navy); white-space: nowrap; }
+.gh-nav { display: flex; align-items: center; gap: calc(24 * var(--hu)); margin: 0; }
+.gh-nav a { font-family: var(--gh-sub); font-weight: 700; font-size: calc(12.7 * var(--hu)); color: var(--gh-navy); position: relative; line-height: 1; white-space: nowrap; padding: 0; border: 0; letter-spacing: normal; }
+.gh-nav a.active { color: var(--gh-purple); }
+.gh-nav a.active::after { content: ""; position: absolute; left: calc(-7 * var(--hu)); right: calc(-7 * var(--hu)); top: calc(22 * var(--hu)); bottom: auto; height: 2px; background: var(--gh-purple); }
+.gh-nav a:hover { color: var(--gh-purple); }
+.gh-tools { display: flex; align-items: center; }
+.gh-icon { background: none; border: 0; padding: 0; margin: 0; color: var(--gh-navy); cursor: pointer; display: inline-flex; align-items: center; gap: calc(3 * var(--hu)); font-family: var(--gh-sub); font-weight: 700; font-size: calc(13 * var(--hu)); line-height: 1.6; }
+.gh-icon svg { width: calc(18 * var(--hu)); height: calc(18 * var(--hu)); }
+.gh-join { display: inline-flex; align-items: center; justify-content: center; width: calc(87 * var(--hu)); height: calc(30 * var(--hu)); border-radius: 999px; border: 1.5px solid var(--gh-purple); background: var(--gh-purple); color: #fff !important; font-family: var(--gh-sub); font-weight: 700; font-size: calc(13 * var(--hu)); white-space: nowrap; transition: .2s; }
+.gh-join:hover { background: #4b4185; }
+.gh-menu { display: none; }
+
+@media (max-width: 760px) {
+  .gh * { --hu: 1px; }
+  .gh-abs { position: static; }
+  .gh-inner { height: 64px; display: flex; align-items: center; gap: 10px; padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); }
+  .gh-brand { display: flex; align-items: center; gap: 8px; }
+  .gh-logo { width: 46px; }
+  .gh-name { font-size: 19px; }
+  .gh-zh { font-size: 11px; margin-top: 1px; }
+  .gh-en { display: none; }
+  .gh-tools { margin-left: auto; gap: 14px; }
+  .gh-search, .gh-lang, .gh-join { display: none !important; }
+  .gh-menu { display: inline-flex; }
+  .gh-menu svg { width: 26px; height: 26px; }
+  .gh-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: #fff; padding: 4px 16px 12px; box-shadow: 0 10px 20px rgba(0,0,0,.06); }
+  .gh-nav.open { display: flex; }
+  .gh-nav a { font-size: 15px; padding: 12px 4px; border-bottom: 1px solid #eee; }
+  .gh-nav a.active::after { display: none; }
+}

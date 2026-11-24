@@ -7,7 +7,7 @@
     'h1', 'h2', 'h3', 'p', '.eyebrow', '.en-italic', '.nav a',
     '.btn span', '.header-tools .btn', '.more-link span',
     '.brand-text > div', '.event-date span', '.event-meta span:not(.sep)',
-    '.lang span'
+    '.lang span', '.gh-nav a', '.gh-text > div', '.gh-lang span', '.gh-join span'
   ].join(',');
 
   var body = document.body;
