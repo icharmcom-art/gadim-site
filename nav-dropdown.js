@@ -17,11 +17,14 @@
     });
   });
   document.addEventListener('click', function (e) { if (!e.target.closest('.nav-drop')) closeAll(); });
+  // 手機選單：點了連結就收起選單
+  var navEl = document.getElementById('nav');
+  if (navEl) navEl.addEventListener('click', function (e) { if (e.target.closest('a')) navEl.classList.remove('open'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
   // 視窗由手機寬度拉回桌機寬度時，收起手機選單
   window.addEventListener('resize', function () {
     var nav = document.getElementById('nav');
-    var burger = document.querySelector('.menu-toggle, .burger');
+    var burger = document.querySelector('.gh-menu');
     if (nav && burger && burger.offsetParent === null) nav.classList.remove('open');
   });
 })();

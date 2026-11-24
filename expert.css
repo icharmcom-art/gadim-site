@@ -37,25 +37,6 @@ ul { list-style: none; }
 .f-title { font-family: var(--ff-title); font-weight: 700; color: var(--ink); }
 .f-sub { font-family: var(--ff-sub); font-weight: 700; }
 
-/* ---------- 頁首 ---------- */
-.site-header { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #ececf1; }
-.header-inner { position: relative; height: calc(72 * var(--u)); max-width: 1440px; margin: 0 auto; }
-.brand { display: block; }
-.brand-logo { width: calc(49 * var(--u)); }
-.brand-name { font-family: var(--en), serif; font-weight: 700; font-size: calc(19.5 * var(--u)); line-height: 1; color: #3d3172; letter-spacing: .01em; }
-.brand-zh { font-family: var(--ff-sub); font-weight: 700; font-size: calc(9.6 * var(--u)); color: var(--navy); margin-top: calc(5 * var(--u)); white-space: nowrap; line-height: 1.2; }
-.brand-en { font-family: var(--en), serif; font-size: calc(7.3 * var(--u)); color: #4b4d63; margin-top: calc(5 * var(--u)); white-space: nowrap; line-height: 1.2; }
-.nav { display: flex; align-items: center; gap: calc(22.4 * var(--u)); }
-.nav a { font-family: var(--ff-sub); font-weight: 700; font-size: calc(12.6 * var(--u)); color: var(--navy); position: relative; line-height: 1; white-space: nowrap; }
-.nav a:hover, .nav a.active { color: #3d3172; }
-.nav a.active::after { content: ""; position: absolute; left: calc(9 * var(--u)); right: calc(9 * var(--u)); top: calc(26 * var(--u)); height: 2px; background: #4e4276; }
-.header-tools .search { background: none; border: 0; padding: 0; color: var(--navy); cursor: pointer; display: block; width: calc(17 * var(--u)); height: calc(17 * var(--u)); }
-.header-tools .search svg { width: 100%; height: 100%; }
-.lang { font-family: var(--en), serif; font-size: calc(12 * var(--u)); color: var(--navy); line-height: 1; white-space: nowrap; }
-.join-btn { display: inline-flex; align-items: center; justify-content: center; width: calc(91 * var(--u)); height: calc(38 * var(--u)); border-radius: 999px; background: var(--join); color: #fff; font-family: var(--ff-sub); font-weight: 700; font-size: calc(12.4 * var(--u)); letter-spacing: .04em; box-shadow: 0 calc(3 * var(--u)) calc(8 * var(--u)) rgba(80, 66, 130, .25); transition: background .2s; }
-.join-btn:hover { background: #534a7e; }
-.menu-toggle { display: none; background: none; border: 0; padding: 0; color: var(--navy); cursor: pointer; }
-
 /* ---------- 主內容：設計稿原圖背景 + 可編輯文字 ---------- */
 .expert { position: relative; aspect-ratio: 1122 / 1073; }
 .expert-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -108,22 +89,6 @@ ul { list-style: none; }
   .page * { --u: 1px; }
   .abs { position: static; }
   br.d { display: none; }
-
-  /* 頁首 */
-  .header-inner { height: 64px; display: flex; align-items: center; padding: 0 16px; }
-  .brand { display: flex; align-items: center; gap: 8px; }
-  .brand-logo { width: 44px; }
-  .brand-name { font-size: 19px; }
-  .brand-zh { font-size: 11px; margin-top: 3px; }
-  .brand-en { display: none; }
-  .header-tools { margin-left: auto; display: flex; align-items: center; }
-  .header-tools .search, .lang, .join-btn { display: none !important; }
-  .menu-toggle { display: inline-flex; }
-  .menu-toggle svg { width: 26px; height: 26px; }
-  .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: #fff; padding: 4px 16px 12px; box-shadow: 0 10px 20px rgba(0, 0, 0, .06); }
-  .nav.open { display: flex; }
-  .nav a { font-size: 15px; padding: 12px 4px; border-bottom: 1px solid #eee; }
-  .nav a.active::after { display: none; }
 
   /* 主內容 */
   .expert { aspect-ratio: auto; background: var(--bg); }

@@ -10,23 +10,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;700&family=Noto+Serif+TC:wght@700&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="expert.css">
+<link rel="stylesheet" href="header.css">
 <link rel="stylesheet" href="nav-dropdown.css">
 </head>
 <body>
 <div class="page">
 
-<!-- ================= 頁首 ================= -->
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="index.html" aria-label="GADIM 首頁">
-      <img class="brand-logo abs" style="--x:35;--y:11" src="images/logo-hd.png" alt="GADIM 標誌">
-      <div class="brand-text abs" style="--x:92;--y:10">
-        <div class="brand-name">GADIM</div>
-        <div class="brand-zh">全球中西整合醫療發展學會</div>
-        <div class="brand-en">Global Association for the Development of Integrative Medicine</div>
+<!-- ================= 頁首（共用，樣式見 header.css） ================= -->
+<header class="gh">
+  <div class="gh-inner">
+    <a class="gh-brand" href="index.html" aria-label="GADIM 首頁">
+      <img class="gh-logo gh-abs" style="--x:30;--y:8" src="images/logo.png" alt="GADIM 標誌">
+      <div class="gh-text gh-abs" style="--x:105;--y:11">
+        <div class="gh-name">GADIM</div>
+        <div class="gh-zh">全球中西整合醫療發展學會</div>
+        <div class="gh-en">Global Association for the Development of Integrative Medicine</div>
       </div>
     </a>
-    <nav class="nav abs" id="nav" style="--x:475;--y:27" aria-label="主要導覽">
+    <nav class="gh-nav gh-abs" id="nav" style="--x:347;--y:29" aria-label="主要導覽">
       <a href="index.html">首頁</a>
       <a href="about.html">關於學會</a>
       <div class="nav-drop">
@@ -42,13 +43,17 @@
       <a href="index.html">課程活動</a>
       <a href="index.html">最新消息</a>
     </nav>
-    <div class="header-tools">
-      <button class="search abs" style="--x:915;--y:25" aria-label="搜尋">
+    <div class="gh-tools">
+      <button class="gh-icon gh-search gh-abs" style="--x:803;--y:26" aria-label="搜尋">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
       </button>
-      <span class="lang abs" style="--x:950;--y:28">中 / EN</span>
-      <a class="join-btn abs" style="--x:997;--y:14" href="index.html#join">加入學會</a>
-      <button class="menu-toggle" aria-label="選單" aria-controls="nav" onclick="document.getElementById('nav').classList.toggle('open')">
+      <button class="gh-icon gh-lang gh-abs" style="--x:837;--y:26" aria-label="語言">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
+        <span>中</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:.8em;height:.8em"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <a class="gh-join gh-abs" style="--x:904;--y:20" href="index.html#join"><span>加入本會</span></a>
+      <button class="gh-icon gh-menu" aria-label="選單" aria-controls="nav" onclick="document.getElementById('nav').classList.toggle('open')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
