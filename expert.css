@@ -103,6 +103,8 @@ ul { list-style: none; }
 .ep-chips li { height: calc(35 * var(--u)); padding: 0 calc(20 * var(--u)); display: inline-flex; align-items: center; border: 1.5px solid #cbc7df; border-radius: 999px; background: rgba(255, 255, 255, .55); font-family: var(--ff-sub); font-weight: 700; font-size: calc(15 * var(--u)); letter-spacing: .05em; color: #2e2462; white-space: nowrap; box-shadow: 0 1px 3px rgba(80, 70, 140, .08); }
 .ep-wave { width: 100%; margin-top: calc(50 * var(--u)); }
 
+.ep-text { grid-column: 2; margin-top: calc(12 * var(--u)); font-size: calc(17 * var(--u)); line-height: calc(29 * var(--u)); letter-spacing: .07em; color: var(--text); }
+
 /* =========================================================
    手機版（760px 以下）：同樣使用原圖，改為上下排列
    ========================================================= */
@@ -154,7 +156,8 @@ ul { list-style: none; }
   .ep-sec { grid-template-columns: 48px 1fr; column-gap: 14px; margin-top: 22px; }
   .ep-icon { width: 48px; }
   .ep-sec h2 { font-size: 22px; }
-  .ep-list, .ep-chips { grid-column: 1 / -1; margin-top: 12px; }
+  .ep-list, .ep-chips, .ep-text { grid-column: 1 / -1; margin-top: 12px; }
+  .ep-text { font-size: 15px; line-height: 1.9; letter-spacing: .05em; }
   .ep-list { margin-left: 10px; padding-left: 28px; }
   .ep-list li { font-size: 15px; line-height: 1.75; padding: 2px 0; letter-spacing: .05em; }
   .ep-list li::before { left: -16px; top: 15px; width: 6px; height: 6px; margin-top: -3px; }
