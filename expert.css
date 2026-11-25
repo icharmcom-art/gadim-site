@@ -82,6 +82,27 @@ ul { list-style: none; }
 .f-note { font-size: calc(10.1 * var(--u)); color: #66667c; letter-spacing: .04em; line-height: 1; white-space: nowrap; }
 .f-copy { left: auto; right: calc(63 * var(--u)); font-family: var(--en), serif; font-size: calc(11.8 * var(--u)); color: #66667c; line-height: 1; white-space: nowrap; letter-spacing: .02em; }
 
+/* ---------- 資料較多的醫師頁（如陳建霖）：照片在左、內容依序往下排 ---------- */
+.expert-flow { aspect-ratio: auto; }
+.expert-flow .hero { position: relative; aspect-ratio: 1122 / 238; background: url("images/experts/hero-bg.jpg") center / 100% 100% no-repeat; }
+.ep { position: relative; padding-top: calc(40 * var(--u)); }
+.ep-grid { display: grid; grid-template-columns: calc(400 * var(--u)) calc(560 * var(--u)); column-gap: calc(48 * var(--u)); margin-left: calc(70 * var(--u)); align-items: start; }
+.ep-photo { position: sticky; top: calc(120 * var(--u)); height: calc(680 * var(--u)); border-radius: calc(200 * var(--u)) calc(200 * var(--u)) calc(22 * var(--u)) calc(22 * var(--u)); overflow: hidden; background: linear-gradient(160deg, #e3e6f3, #d9dfec); }
+.ep-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.ep-info { padding-top: calc(10 * var(--u)); }
+.ep-info .name-row { position: static; }
+.ep-info .name-line { margin-top: calc(32 * var(--u)); }
+.ep-sec { display: grid; grid-template-columns: calc(56 * var(--u)) 1fr; column-gap: calc(20 * var(--u)); margin-top: calc(26 * var(--u)); }
+.ep-icon { width: calc(56 * var(--u)); grid-row: 1; }
+.ep-sec h2 { grid-column: 2; align-self: center; font-size: calc(28 * var(--u)); line-height: 1; letter-spacing: .04em; }
+.ep-list, .ep-chips { grid-column: 2; margin-top: calc(12 * var(--u)); }
+.ep-list { border-left: 2px solid #a3bbb7; padding-left: calc(34 * var(--u)); margin-left: calc(-4 * var(--u)); }
+.ep-list li { position: relative; font-size: calc(17 * var(--u)); line-height: calc(29 * var(--u)); letter-spacing: .07em; color: var(--text); }
+.ep-list li::before { content: ""; position: absolute; left: calc(-17 * var(--u)); top: calc(14.5 * var(--u)); width: calc(7 * var(--u)); height: calc(7 * var(--u)); margin-top: calc(-3.5 * var(--u)); border-radius: 50%; background: #5d8b80; }
+.ep-chips { display: flex; flex-wrap: wrap; gap: calc(10 * var(--u)) calc(12 * var(--u)); }
+.ep-chips li { height: calc(35 * var(--u)); padding: 0 calc(20 * var(--u)); display: inline-flex; align-items: center; border: 1.5px solid #cbc7df; border-radius: 999px; background: rgba(255, 255, 255, .55); font-family: var(--ff-sub); font-weight: 700; font-size: calc(15 * var(--u)); letter-spacing: .05em; color: #2e2462; white-space: nowrap; box-shadow: 0 1px 3px rgba(80, 70, 140, .08); }
+.ep-wave { width: 100%; margin-top: calc(50 * var(--u)); }
+
 /* =========================================================
    手機版（760px 以下）：同樣使用原圖，改為上下排列
    ========================================================= */
@@ -123,6 +144,23 @@ ul { list-style: none; }
   .tags { grid-template-columns: 1fr; row-gap: 12px; margin-top: 28px; }
   .tags li { height: 50px; font-size: 16px; }
   .tags img { width: 34px; height: 34px; }
+
+  /* 資料較多的醫師頁 */
+  .expert-flow .hero { aspect-ratio: auto; background: #f2f1f7; }
+  .ep { padding: 26px 20px 0; }
+  .ep-grid { grid-template-columns: 1fr; margin: 0; row-gap: 26px; }
+  .ep-photo { position: relative; top: auto; width: 100%; max-width: 420px; height: auto; aspect-ratio: 400 / 600; margin: 0 auto; border-radius: 200px 200px 20px 20px; }
+  .ep-info .name-line { width: 100%; margin: 18px 0 0; }
+  .ep-sec { grid-template-columns: 48px 1fr; column-gap: 14px; margin-top: 22px; }
+  .ep-icon { width: 48px; }
+  .ep-sec h2 { font-size: 22px; }
+  .ep-list, .ep-chips { grid-column: 1 / -1; margin-top: 12px; }
+  .ep-list { margin-left: 10px; padding-left: 28px; }
+  .ep-list li { font-size: 15px; line-height: 1.75; padding: 2px 0; letter-spacing: .05em; }
+  .ep-list li::before { left: -16px; top: 15px; width: 6px; height: 6px; margin-top: -3px; }
+  .ep-chips { gap: 8px; }
+  .ep-chips li { height: 32px; padding: 0 14px; font-size: 14px; }
+  .ep-wave { margin: 40px -20px 0; width: calc(100% + 40px); max-width: none; }
 
   /* 頁尾 */
   .site-footer { height: auto; padding: 32px 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; }
