@@ -1,7 +1,7 @@
 /* 加入會員表單：簽名板、身分證上傳預覽、檢查必填、送出
    ENDPOINT：學會 Google Apps Script 網址（第二階段設定後填入）。空白時只顯示預覽，不送出任何資料。 */
 (function () {
-  var ENDPOINT = '';
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxQ3LmPoIjJ7ihvokDWTVo3N3NEdDgf0I6SLddZf8gUtW9RpS0jw9Q-uc3dwsIC656Oyg/exec';
 
   var form = document.getElementById('joinForm');
   var errBox = document.getElementById('formError');
