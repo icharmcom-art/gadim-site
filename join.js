@@ -10,30 +10,44 @@
   /* ---------- 簽名板 ---------- */
   var canvas = document.getElementById('signPad');
   var ctx = canvas.getContext('2d');
-  var signed = false, drawing = false, last = null;
+  // 筆跡以「比例座標」存成清單，改變視窗大小時同步重畫；清除時清空清單（不再用非同步圖片還原，避免清不掉）
+  var strokes = [], cur = null, signed = false, cw = 0, ch = 0;
+  function redraw() {
+    var dpr = window.devicePixelRatio || 1;
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.lineWidth = 2.6; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = ctx.fillStyle = '#1f2558';
+    strokes.forEach(function (st) {
+      ctx.beginPath(); ctx.moveTo(st[0].x * cw, st[0].y * ch);
+      if (st.length === 1) { ctx.arc(st[0].x * cw, st[0].y * ch, 1.3, 0, Math.PI * 2); ctx.fill(); return; }
+      for (var i = 1; i < st.length; i++) ctx.lineTo(st[i].x * cw, st[i].y * ch);
+      ctx.stroke();
+    });
+  }
   function sizeCanvas() {
     var r = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
     if (!r.width) return;
-    var old = signed ? canvas.toDataURL() : null;
-    canvas.width = r.width * dpr; canvas.height = r.height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.lineWidth = 2.6; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#1f2558';
-    if (old) { var im = new Image(); im.onload = function () { ctx.drawImage(im, 0, 0, r.width, r.height); }; im.src = old; }
+    if (r.width === cw && r.height === ch && canvas.width === Math.round(r.width * dpr)) return; // 大小沒變就不動
+    cw = r.width; ch = r.height;
+    canvas.width = Math.round(cw * dpr); canvas.height = Math.round(ch * dpr);
+    redraw();
   }
-  function pos(e) { var r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+  function pos(e) { var r = canvas.getBoundingClientRect(); return { x: (e.clientX - r.left) / r.width, y: (e.clientY - r.top) / r.height }; }
   canvas.addEventListener('pointerdown', function (e) {
-    e.preventDefault(); drawing = true; last = pos(e); canvas.setPointerCapture(e.pointerId);
-    ctx.beginPath(); ctx.arc(last.x, last.y, 1.2, 0, Math.PI * 2); ctx.fillStyle = '#1f2558'; ctx.fill();
+    e.preventDefault(); sizeCanvas();
+    try { canvas.setPointerCapture(e.pointerId); } catch (ignore) {}
+    cur = [pos(e)]; strokes.push(cur); redraw();
   });
   canvas.addEventListener('pointermove', function (e) {
-    if (!drawing) return; e.preventDefault();
-    var p = pos(e); ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p;
-    if (!signed) { signed = true; canvas.parentNode.classList.remove('bad'); }
+    if (!cur) return; e.preventDefault();
+    var p = pos(e), l = cur[cur.length - 1];
+    cur.push(p);
+    ctx.beginPath(); ctx.moveTo(l.x * cw, l.y * ch); ctx.lineTo(p.x * cw, p.y * ch); ctx.stroke();
+    if (!signed && cur.length > 2) { signed = true; canvas.parentNode.classList.remove('bad'); }
   });
-  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (t) { canvas.addEventListener(t, function () { drawing = false; }); });
-  document.getElementById('signClear').addEventListener('click', function () {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); signed = false;
-  });
+  ['pointerup', 'pointercancel'].forEach(function (t) { canvas.addEventListener(t, function () { cur = null; }); });
+  function clearSign() { strokes = []; cur = null; signed = false; redraw(); }
+  document.getElementById('signClear').addEventListener('click', function (e) { e.preventDefault(); clearSign(); });
   var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(sizeCanvas, 150); });
   sizeCanvas();
 
