@@ -44,13 +44,14 @@ function doGet() {
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
+  var sheet, rowIndex;
   try {
     var d = JSON.parse(e.postData.contents);
     var err = validate_(d);
     if (err) return json_({ ok: false, error: err });
 
     lock.waitLock(30000);
-    var sheet = getSheet_();
+    sheet = getSheet_();
     var no = nextNumber_();
     var now = new Date();
     var folderName = no + '_' + clean_(d.name) + '_' + clean_(d.category);
@@ -61,7 +62,7 @@ function doPost(e) {
       "'" + d.phone, d.email, d.address, d.org, d.title || '', d.education || '', d.specialty || '',
       CONFIG.TEST_MODE ? '測試（未付款）' : '待付款', '', '', '', '待審查', folder.getUrl(), '', '處理中'];
     sheet.appendRow(row);
-    var rowIndex = sheet.getLastRow();
+    rowIndex = sheet.getLastRow();
     lock.releaseLock();
 
     // 存檔：身分證、簽名
@@ -100,6 +101,7 @@ function doPost(e) {
 
     return json_({ ok: true, memberNo: no, mailed: mailStatus === '已寄出', testMode: CONFIG.TEST_MODE });
   } catch (x) {
+    try { if (rowIndex) sheet.getRange(rowIndex, HEADERS.indexOf('寄信狀態') + 1).setValue('錯誤：' + x.message); } catch (ignore) {}
     return json_({ ok: false, error: String(x && x.message || x) });
   } finally {
     try { lock.releaseLock(); } catch (ignore) {}
@@ -115,12 +117,13 @@ function makePdf_(d, no, now, sig, front, back, folder) {
   body.setAttributes(base);
 
   var t = body.getParagraphs()[0];
-  t.setText(CONFIG.ORG_NAME).setAlignment(DocumentApp.HorizontalAlignment.CENTER)
-    .editAsText().setFontFamily('Noto Serif TC').setFontSize(13).setBold(true);
+  t.setText(CONFIG.ORG_NAME); // setText 不回傳段落，不能串接
+  t.setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  t.editAsText().setFontFamily('Noto Serif TC').setFontSize(13).setBold(true);
   var h = body.appendParagraph('會員入會申請表').setAlignment(DocumentApp.HorizontalAlignment.CENTER);
   h.editAsText().setFontFamily('Noto Serif TC').setFontSize(20).setBold(true);
-  body.appendParagraph('會員編號：' + no + '　　申請日期：' + roc_(now)).setAlignment(DocumentApp.HorizontalAlignment.RIGHT)
-    .editAsText().setFontSize(9).setBold(false);
+  para_(body, '會員編號：' + no + '　　申請日期：' + roc_(now)).setAlignment(DocumentApp.HorizontalAlignment.RIGHT)
+    .editAsText().setFontSize(9);
 
   var rows = [
     ['一、基本資料', ''],
@@ -143,24 +146,24 @@ function makePdf_(d, no, now, sig, front, back, folder) {
   }
 
   sec_(body, '三、入會聲明');
-  body.appendParagraph('☑ 本人贊同本學會宗旨，願遵守章程及相關規定，並按時繳納會費。');
+  para_(body, '☑ 本人贊同本學會宗旨，願遵守章程及相關規定，並按時繳納會費。');
   sec_(body, '五、個資使用同意');
-  body.appendParagraph('☑ 本人同意本會蒐集、處理及利用上述個人資料，僅限於會務運作及聯繫使用。');
-  body.appendParagraph('申請人簽名：');
+  para_(body, '☑ 本人同意本會蒐集、處理及利用上述個人資料，僅限於會務運作及聯繫使用。');
+  para_(body, '申請人簽名：');
   var sp = body.appendParagraph('');
   var simg = sp.appendInlineImage(sig.copyBlob());
   scale_(simg, 200, 80);
 
   sec_(body, '四、審查欄（由學會填寫）');
-  body.appendParagraph('會員編號：' + no + '　　審查結果：□通過 □未通過');
-  body.appendParagraph('理事會審核日期：＿＿年＿＿月＿＿日　　理事長簽章：＿＿＿＿＿＿＿＿');
-  if (CONFIG.TEST_MODE) body.appendParagraph('※ 測試資料（未付款）').editAsText().setForegroundColor('#C0476B');
+  para_(body, '會員編號：' + no + '　　審查結果：□通過 □未通過');
+  para_(body, '理事會審核日期：＿＿年＿＿月＿＿日　　理事長簽章：＿＿＿＿＿＿＿＿');
+  if (CONFIG.TEST_MODE) para_(body, '※ 測試資料（未付款）').editAsText().setForegroundColor('#C0476B');
 
   body.appendPageBreak();
   sec_(body, '身分證影本');
-  body.appendParagraph('正面');
+  para_(body, '正面');
   scale_(body.appendParagraph('').appendInlineImage(front.copyBlob()), 420, 280);
-  body.appendParagraph('反面');
+  para_(body, '反面');
   scale_(body.appendParagraph('').appendInlineImage(back.copyBlob()), 420, 280);
 
   doc.saveAndClose();
@@ -170,8 +173,14 @@ function makePdf_(d, no, now, sig, front, back, folder) {
   return pdf;
 }
 
-function sec_(body, text) {
+function para_(body, text) {
   var p = body.appendParagraph(text);
+  p.setAlignment(DocumentApp.HorizontalAlignment.LEFT).setSpacingBefore(0);
+  p.editAsText().setFontFamily('Noto Sans TC').setBold(false).setFontSize(10.5).setForegroundColor('#2F3450');
+  return p;
+}
+function sec_(body, text) {
+  var p = para_(body, text);
   p.setSpacingBefore(12).editAsText().setBold(true).setFontSize(11.5).setForegroundColor('#1F2558');
   return p;
 }
