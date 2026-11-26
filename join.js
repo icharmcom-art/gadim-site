@@ -52,7 +52,10 @@
     redraw();
     canvas.style.display = 'none'; void canvas.offsetHeight; canvas.style.display = ''; // 強制重新繪製
   }
-  document.getElementById('signClear').addEventListener('click', function (e) { e.preventDefault(); clearSign(); });
+  // 同時聽 pointerup 和 click：有些手機在剛簽完名後，第一次點按鈕不會產生 click
+  var clearBtn = document.getElementById('signClear');
+  clearBtn.addEventListener('pointerup', function () { clearSign(); });
+  clearBtn.addEventListener('click', function (e) { e.preventDefault(); clearSign(); });
   var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(sizeCanvas, 150); });
   sizeCanvas();
 
