@@ -1,7 +1,7 @@
 /* 加入會員表單：簽名板、身分證上傳預覽、檢查必填、送出
    ENDPOINT：學會 Google Apps Script 網址（第二階段設定後填入）。空白時只顯示預覽，不送出任何資料。 */
 (function () {
-  var ENDPOINT = '';
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxQ3LmPoIjJ7ihvokDWTVo3N3NEdDgf0I6SLddZf8gUtW9RpS0jw9Q-uc3dwsIC656Oyg/exec';
 
   var form = document.getElementById('joinForm');
   var errBox = document.getElementById('formError');
@@ -125,7 +125,7 @@
       category: val('category'), name: val('name'), gender: val('gender'),
       birthday: val('birthday'), idNumber: val('idNumber').toUpperCase(), phone: val('phone'), email: val('email'),
       address: val('address'), org: val('org'), title: val('title'), education: val('education'), specialty: val('specialty'),
-      applyDate: iso, agreeRules: true, agreePrivacy: true,
+      applyDate: iso, website: val('website'), agreeRules: true, agreePrivacy: true,
       signature: canvas.toDataURL('image/png'), idFront: ids.idFront, idBack: ids.idBack
     };
   }
@@ -164,7 +164,14 @@
       .then(function (j) {
         if (!j.ok) throw new Error(j.error || '送出失敗');
         if (j.payUrl) { location.href = j.payUrl; return; }
-        render(data); form.hidden = true; document.getElementById('result').hidden = false;
+        render(data); form.hidden = true; document.querySelector('.steps').hidden = true;
+        var res = document.getElementById('result');
+        res.querySelector('.card-title').textContent = '申請已送出';
+        res.querySelector('.hint').innerHTML = '感謝您的申請！您的申請編號為 <b class="en">' + esc(j.memberNo) + '</b>。' +
+          (j.mailed ? '入會申請書 <span class="en">PDF</span> 已寄到 ' + esc(data.email) + '，請查收（若沒看到，請檢查垃圾郵件匣）。' : '申請書寄送時發生問題，本會將另行與您聯繫。') +
+          (j.testMode ? '<br><span style="color:#c0476b">（目前為測試模式，尚未收費）</span>' : '');
+        document.getElementById('backEdit').hidden = true;
+        res.hidden = false; res.scrollIntoView({ behavior: 'smooth' });
       })
       .catch(function (err) { btn.disabled = false; btn.textContent = '確認送出申請'; errBox.hidden = false; errBox.textContent = '送出失敗，請稍後再試（' + err.message + '）'; });
   });
