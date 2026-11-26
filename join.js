@@ -46,8 +46,16 @@
     if (!signed && cur.length > 2) { signed = true; canvas.parentNode.classList.remove('bad'); }
   });
   ['pointerup', 'pointercancel'].forEach(function (t) { canvas.addEventListener(t, function () { cur = null; }); });
-  function clearSign() { strokes = []; cur = null; signed = false; redraw(); }
-  document.getElementById('signClear').addEventListener('click', function (e) { e.preventDefault(); clearSign(); });
+  function clearSign() {
+    strokes = []; cur = null; signed = false;
+    canvas.width = canvas.width; // 重建畫布，確保所有瀏覽器（含 Windows 縮放 125%/150%）整塊清空
+    redraw();
+    canvas.style.display = 'none'; void canvas.offsetHeight; canvas.style.display = ''; // 強制重新繪製
+  }
+  // 同時聽 pointerup 和 click：有些手機在剛簽完名後，第一次點按鈕不會產生 click
+  var clearBtn = document.getElementById('signClear');
+  clearBtn.addEventListener('pointerup', function () { clearSign(); });
+  clearBtn.addEventListener('click', function (e) { e.preventDefault(); clearSign(); });
   var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(sizeCanvas, 150); });
   sizeCanvas();
 
