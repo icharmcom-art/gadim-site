@@ -1,0 +1,106 @@
+/* 加入會員頁（沿用 about.css 的字型變數、頁尾）
+[hidden]{display:none !important}
+   中文大標：粗明體｜小標：微軟正黑體粗體｜內文：微軟正黑體細體｜英文數字：Times New Roman */
+.join-hero{background:linear-gradient(135deg,#f3f2f6 0%,#f6f5f5 55%,#f2f6f5 100%);padding:40px 0 48px}
+.join-hero .shell{max-width:900px}
+.join-hero .breadcrumb{margin-bottom:26px}
+.join-hero h1{font-size:clamp(36px,4.6vw,56px);margin:10px 0 12px}
+
+.steps{list-style:none;margin:0 auto;padding:22px 16px;max-width:900px;display:flex;justify-content:space-between;gap:8px;counter-reset:s}
+.steps li{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--en),var(--zh-sub);font-weight:700;font-size:14px;color:#a3a6b5;text-align:center;position:relative}
+.steps li span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1.5px solid #cfcfdb;background:#fff;font-size:16px;color:#a3a6b5;position:relative;z-index:1}
+.steps li+li:before{content:'';position:absolute;top:17px;right:50%;width:100%;height:1.5px;background:#dedde4}
+.steps li.on{color:var(--navy)}.steps li.on span{background:var(--purple);border-color:var(--purple);color:#fff}
+
+.join-form,.result{max-width:900px;margin:0 auto;padding-bottom:70px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:36px 40px;margin-bottom:24px;scroll-margin-top:90px}
+.card-title{font-family:var(--en),var(--zh-title);font-weight:900;color:var(--navy);font-size:26px;letter-spacing:.06em;display:flex;align-items:baseline;gap:14px;margin-bottom:22px}
+.card-title .en{font-size:18px;color:var(--teal);letter-spacing:.1em;font-weight:400}
+.sub-title{font-family:var(--en),var(--zh-sub);font-weight:700;color:var(--navy);font-size:17px;margin:28px 0 10px}
+.sub-title i,.field i,legend i{color:#c0476b;font-style:normal}
+.notice{font-size:15px;line-height:2;color:#4e5265}
+.notice ul{margin:8px 0 0;padding-left:1.3em}
+.scrollbox{max-height:220px;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:16px 20px;background:var(--paper);font-size:14px;line-height:1.95;color:#4e5265}
+.scrollbox.short{max-height:150px}
+.scrollbox p+p{margin-top:8px}
+.scrollbox strong{font-family:var(--en),var(--zh-sub);font-weight:700;color:var(--navy)}
+.placeholder{color:#a3a6b5}
+.check{display:flex;gap:12px;align-items:flex-start;margin-top:18px;font-size:15px;line-height:1.7;cursor:pointer}
+.check input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--purple)}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin-top:20px}
+.field{display:flex;flex-direction:column;gap:6px;border:0;margin:0;padding:0;min-width:0}
+.field.full{grid-column:1/-1}
+.field>span,legend{font-family:var(--en),var(--zh-sub);font-weight:700;font-size:14px;color:var(--navy);padding:0}
+.field input,.field select,.field textarea,.other-input{font:inherit;font-family:var(--en),var(--zh-body);font-weight:300;font-size:16px;color:var(--ink);border:1px solid #cfcfdb;border-radius:8px;padding:11px 13px;background:#fff;width:100%;min-height:46px}
+.field textarea{resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid rgba(94,83,152,.35);border-color:var(--purple)}
+.field .bad,.upload.bad .upload-box,.sign-wrap.bad{border-color:#c0476b !important;background:#fff7f9}
+.choices{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.choice{position:relative}.choice input{position:absolute;left:0;top:0;opacity:0;pointer-events:none}
+.choice span{display:inline-block;padding:10px 26px;border:1.5px solid #cfcfdb;border-radius:30px;font-family:var(--en),var(--zh-sub);font-weight:700;font-size:15px;color:var(--navy);cursor:pointer;transition:.15s}
+.choice input:checked+span{background:var(--purple);border-color:var(--purple);color:#fff}
+.choice input:focus-visible+span{outline:2px solid var(--purple);outline-offset:2px}
+.choices.bad .choice span{border-color:#c0476b}
+
+.hint{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:10px}
+.sign-wrap{position:relative;border:1.5px dashed #b9b6cc;border-radius:12px;background:#fff;height:220px;touch-action:none}
+.sign-wrap canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:none}
+.sign-line{position:absolute;left:24px;right:24px;bottom:44px;border-top:1px solid #dedde4;pointer-events:none;font-size:12px;color:#b6b8c6;padding-top:4px}
+.sign-tools{display:flex;justify-content:flex-end;margin-top:10px}
+
+.id-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.upload{position:relative;display:block}.upload input{position:absolute;left:0;top:0;opacity:0;width:1px;height:1px}
+.upload-box{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;aspect-ratio:1.586;border:1.5px dashed #b9b6cc;border-radius:12px;background:var(--paper);cursor:pointer;overflow:hidden;position:relative;color:var(--purple)}
+.upload-box b{font-size:34px;font-weight:300;line-height:1}
+.upload-box em{font-style:normal;font-family:var(--en),var(--zh-sub);font-weight:700;font-size:14px;color:var(--navy)}
+.upload-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;display:none}
+.upload.has .upload-box img{display:block}
+.upload.has .upload-box em{position:absolute;bottom:8px;background:rgba(255,255,255,.9);padding:2px 12px;border-radius:20px;z-index:1}
+.upload input:focus-visible+.upload-box{outline:2px solid var(--purple);outline-offset:2px}
+
+.fee{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:16px}
+.fee div{display:flex;justify-content:space-between;padding:13px 20px;font-size:15px}
+.fee div+div{border-top:1px solid var(--line)}
+.fee .total{background:#f4f2f9;font-family:var(--en),var(--zh-sub);font-weight:700;color:var(--navy)}
+.fee b{font-size:17px}
+.form-error{color:#c0476b;font-size:14px;margin:6px 0 12px}
+
+.btn{font-family:var(--en),var(--zh-sub);font-weight:700;font-size:14px;border-radius:30px;padding:10px 24px;cursor:pointer;border:1.5px solid var(--purple);transition:.15s}
+.btn.ghost{background:#fff;color:var(--purple)}.btn.ghost:hover{background:#f1eff8}
+.btn.primary{background:var(--purple);color:#fff}.btn.primary:hover{background:#494079}
+.btn.big{display:block;width:100%;font-size:17px;padding:15px;margin-top:8px;letter-spacing:.1em}
+
+/* 預覽（＝PDF 版面） */
+.pdf-preview{border:1px solid var(--line);padding:30px;margin:18px 0;background:#fff;font-size:14px}
+.pdf-preview h3{font-family:var(--en),var(--zh-title);font-weight:900;text-align:center;color:var(--navy);font-size:22px;letter-spacing:.12em;margin-bottom:4px}
+.pdf-preview .org{text-align:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+.pdf-preview table{width:100%;border-collapse:collapse}
+.pdf-preview th,.pdf-preview td{border:1px solid #cfcfdb;padding:8px 10px;text-align:left;vertical-align:top}
+.pdf-preview th{width:24%;background:#f6f5f9;font-family:var(--en),var(--zh-sub);font-weight:700;color:var(--navy);white-space:nowrap}
+.pdf-preview .sig img{height:80px}
+.pdf-preview .ids{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.pdf-preview .ids img{width:100%;border:1px solid #eee}
+.pdf-preview .agree{margin-top:12px;font-size:13px;color:#4e5265}
+
+@media(max-width:650px){
+ .join-hero{padding:22px 0 30px}.join-hero .breadcrumb{margin-bottom:18px}
+ .steps{padding:18px 8px}.steps li{font-size:12px}.steps li span{width:30px;height:30px;font-size:14px}.steps li+li:before{top:15px}
+ .join-form,.result{padding:0 16px 50px}
+ .card{padding:24px 18px;border-radius:12px;margin-bottom:16px}
+ .card-title{font-size:22px;margin-bottom:16px}
+ .grid{grid-template-columns:1fr;gap:16px}
+ .choice span{padding:10px 20px}
+ .sign-wrap{height:190px}
+ .id-grid{grid-template-columns:1fr}
+ .pdf-preview{padding:14px}.pdf-preview th{width:34%;white-space:normal}
+ .pdf-preview .ids{grid-template-columns:1fr}
+}
+.scrollbox h4{font-family:var(--en),var(--zh-sub);font-weight:700;color:var(--navy);font-size:15px;margin:14px 0 4px}
+.scrollbox h4.doc-title{font-family:var(--en),var(--zh-title);font-weight:900;text-align:center;font-size:17px;letter-spacing:.08em;margin-top:0}
+.scrollbox p+p{margin-top:2px}.scrollbox .item{padding-left:2em}
+.other-input{margin-top:10px;max-width:360px}
+.choices.small .choice span{padding:10px 20px}
+.check.bad span{color:#c0476b}
+fieldset.field.full+fieldset.field.full{margin-top:20px}
+@media(max-width:650px){.choices{gap:10px}.choice span{padding:9px 16px;font-size:14px}}
